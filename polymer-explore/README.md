@@ -1,4 +1,4 @@
-![Polymer](http://www.polymer-project.org)
+# [Polymer](http://www.polymer-project.org)
 
 Agenda
 
@@ -91,4 +91,49 @@ A virtualized, "infinite" list
 		{name: 'Ada Blick'},
 		{name: 'Addy Osmani'}
 	];
+```
+
+Use core-image to prevent stale images in your list
+
+
+```
+<core-list flex>
+	<template>
+		<div layout horizontal center>
+		  <core-image src="{{model.avatar}}" sizing="cover" preload></core-image>
+		<div flex> {{model.name}} </div>
+		</div>
+	</template>
+</core-list>
+```
+
+Bind `<core-list>` `scrollTarget` to  `<core-header-panel`s scroller
+
+
+```
+<core-header-panel id="hPanel">
+	<core-list id="contactsList" scrollTarget="{{$.hPanel.scroller}}">
+	...
+	</core-list>
+</core-header-panel>
+```
+
+or
+
+
+```
+	this.$.list.scrollTarget = this.$.hPanel.scroller;
+```
+
+
+## <core-animated-pages>
+
+A pluggable system for creating smoot transitions from one view to the next
+
+```
+<core-animated-pages selected="0" transitions="slide-from-right">
+	<section>Geography </section>
+	<section>Science </section>
+	<section>Music </section>
+</core-animated-pages>
 ```
